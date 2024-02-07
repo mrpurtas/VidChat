@@ -74,7 +74,7 @@ with tab_search:
         selected_video = st.selectbox(
             label="Sohbet Etmek İstediğiniz Videoyu Seçiniz:",
             options =video_urls,
-            format_func=lambda url: video_titles[url]
+            format_func=lambda url: video_titles[url],
             key = "search_selectbox"
         )
             
