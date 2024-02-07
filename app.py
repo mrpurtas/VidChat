@@ -119,7 +119,7 @@ with tab_search:
             st.video(data=video.video_url)
             st.caption(f"Video Başlığı: {video.video_title}")
             st.caption(f"Kanal: {video.channel_name}")
-            st.caption(f"Video Süresi": {video.duration})
+            st.caption(f"Video Süresi: {video.duration}")
             st.divider()
 
 
