@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 from youtubevideo import YoutubeVideo
 
+
 load_dotenv()
 my_key_openai = os.getenv("OPENAI_API_KEY")
 
@@ -24,8 +25,6 @@ def get_video_transcript(url):
         OpenAIWhisperParser(api_key=my_key_openai)
 
     )
-
-    loader.load()
 
     video_transcript_docs = loader.load()
 
