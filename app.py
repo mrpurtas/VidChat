@@ -23,7 +23,7 @@ with tab_url:
         st.video(data=video_url)
         st.divider()
 
-        if st.session_state.current_transcript_docs != video_url:
+        if st.session_state.current_video_url != video_url:
             with st.spinner("AŞAMA-1: Video metni hazırlanıyor..."):
                 video_transcript_docs = videohelper.get_video_transcript(url=video_url)
                 st.session_state.current_transcript_docs = video_transcript_docs
