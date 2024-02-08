@@ -2,6 +2,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
+
 
 import os
 from dotenv import load_dotenv
@@ -9,10 +11,24 @@ from dotenv import load_dotenv
 load_dotenv()
 my_key_openai = os.getenv("OPENAI_API_KEY")
 my_key_google = os.getenv("GOOGLE_API_KEY")
+my_key_hf = os.getenv("HUGGING_FACE_ACCESS_TOKEN")
+
 
 llm_gemini = ChatGoogleGenerativeAI(google_api_key=my_key_google, model = "gemini-pro")
 
 embeddings = OpenAIEmbeddings(api_key=my_key_openai)
+
+
+
+
+
+
+
+# embeddings = HuggingFaceInferenceAPIEmbeddings(
+#     api_key=my_key_hf,
+#     model_name="sentence-transformers/all-MiniLM-16-v2"
+# )
+
 
 #1 Dil modeliyle konusma
 def ask_gemini(prompt):
@@ -35,6 +51,7 @@ def rag_with_video_transricpt(transcript_docs, prompt):
     splitted_documents = text_splitter.split_documents(transcript_docs)
 
     vectorstore = FAISS.from_documents(splitted_documents, embeddings)
+
     retriever = vectorstore.as_retriever()
 
     relevant_documents = retriever.get_relevant_documents(prompt)
