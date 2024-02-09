@@ -3,8 +3,10 @@ langchain-openai
 openai
 langchain-google-genai
 scrapetube
+ffmpeg-python
 yt_dlp
 pydub
 faiss-cpu
 streamlit
 python-dotenv
+
